@@ -6,9 +6,34 @@ public class BlackBox {
     String resolution; // 해상도
     int price; // 가격
     String color; // 제품 색상
+    int serialNumber;
 
     // 클래스 변수
     static boolean canAutoReport = false; //자동신고기능
+    static int counter = 0; // 시리얼 번호를 생성해주는 역할 (초기 0 -> 생성자 통해서 값 증가)
+
+
+    // 생성자가 없는 경우에는 자바가 기본 생성자를 자동으로 생성 및 호출한다.
+    // 개발자가 생성자를 만든 경우에는 기본 생성자를 자동으로 생성해주지 않는다.
+
+    BlackBox(){
+        System.out.println("기본 생성자 호출");
+        this.serialNumber = ++counter;
+        System.out.println("새로운 시리얼넘버를 발급받았습니다. ["+this.serialNumber+"]");
+    }
+    BlackBox(String modelName, String resolution, int price, String color){
+        this(); // 기본 생성자 호출
+        System.out.println("사용자 정의 생성자 호출");
+        this.modelName = modelName;
+        this.resolution = resolution;
+        this.price = price;
+        this.color = color;
+    }
+
+    BlackBox(String modelName, String resolution, int price){
+        this(modelName, resolution, price, "블랙");
+        
+    }
 
     // 메서드
     void autoReport() {
@@ -31,5 +56,36 @@ public class BlackBox {
             return 2;
         }
         return 11;
+    }
+
+    // showDateTime : 날짜 정보 표시 여부 boolean
+    // showSpeed : 속도 정보 표시 여부 boolean
+    // min : 영상 기록 단위(분) int
+
+    void record(boolean showDateTime, boolean showSpeed, int min){
+        System.out.println("녹화를 시작합니다.");
+        if(showDateTime) {
+            System.out.println("영상에 날짜 정보가 표시됩니다.");
+        }
+        if(showSpeed){
+            System.out.println("영상에 속도 정보가 표시됩니다.");
+        }
+        System.out.println("영상은 "+min+"분 단위로 기록됩니다.");
+    }
+
+    void record(){
+       record(true,true,5);
+    }
+
+    static void callServiceCenter(){
+        System.out.println("서비스 센터 (1588-0000)으로 연결합니다.");
+//        modelName = "분홍이";
+        canAutoReport = true;
+    }
+
+
+    void appendModelName(String modelName) {
+        this.modelName += modelName; // this로 클래스 인스턴스 변수를 가리킬 수 있음.
+
     }
 }
