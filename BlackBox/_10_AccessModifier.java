@@ -2,6 +2,10 @@ package BlackBox;
 
 public class _10_AccessModifier {
     public static void main(String[] args) {
+
+        // 캡슐화: 필요한 것들끼리만, 서로 연결할 것들끼리만 하나의 캡슐에 담는다.
+        // 정보 은닉: 정보를 숨기는 것
+
         // 접근제어자
         // public : 모든 클래스에서 접근 가능
         // protected : 같은 패키지 내에서 접근 가능하나 다른 패키지인 경우 자식 클래스에서 접근 가능
