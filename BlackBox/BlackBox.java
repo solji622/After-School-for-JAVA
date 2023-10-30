@@ -32,8 +32,46 @@ public class BlackBox {
 
     BlackBox(String modelName, String resolution, int price){
         this(modelName, resolution, price, "블랙");
-        
+
     }
+
+    // getter setter
+    String getModelName(){
+        return modelName;
+    }
+    void setModelName(String modelName){
+        this.modelName = modelName;
+    }
+
+    int getPrice(){
+        return price;
+    }
+    void setPrice(int price){
+        if (price < 100000){
+            this.price = 100000;
+        } else {
+            this.price = price;
+        }
+        this.price = price;
+    }
+
+    String getColor(){
+        return color;
+    }
+    void setColor(String color) {
+        this.color = color;
+    }
+
+    String getResolution(){
+        if(resolution == null || resolution.isEmpty()){
+            return "판매자에게 문의하세여";
+        }
+        return resolution;
+    }
+    void setResolution(String resolution){
+        this.resolution = resolution;
+    }
+
 
     // 메서드
     void autoReport() {
